@@ -1,39 +1,129 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+![image]()
 
-Welcome,
+# Tipple & Tail
+## By Jacen Green
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Summary
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+## Process
 
-## Codeanywhere Reminders
+**Problem Statement**
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+**Research**
+<details>
+ <summary></summary>
+ 
+</details>
 
-`python3 -m http.server`
+**Design**
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+**Development**
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+**Data Models**
 
-`http_server`
+## Features
+**CRUD Functionality**
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+**Authentication & Authorisation**
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+**Future Feature Implementation**
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+## Roadmap
 
-To log into the Heroku toolbelt CLI:
+## Bugs
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+## Technologies Used
+**Core Development**
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+**Libraries, Frameworks and Packages
 
----
+**Python/Django Packages**
 
-Happy coding!
+**Infrastructure**
+
+## Testing
+**Automated**
+
+**Manual**
+
+**Genral**
+
+**Authorisation**
+
+**Lighthouse**
+
+**Responsiveness**
+ResponsivelyApp
+
+**Code Validation**
+W3C Markup Validation Service
+JSHint
+PEP8
+
+## Deployment
+**Local Deployment**
+**Heroku Deployment**
+<details>
+ <summary>Method :purple_circle:</summary>
+
+- From the dashboard you will be able to see your deployed projects. Click on `New`, then `Create new app`:
+  <details>
+    <summary>Dashboard :mag:</summary>
+    
+    ![image](https://github.com/Viridi-Machina/battleships/assets/146846939/d4468782-45f9-4c26-8369-1ddffee2b408)
+  </details>
+
+- Enter a unique `App name` and `Choose a region`, then click `Create app`.<br>
+  Once created you navigate to the `Settings` menu.
+  <details>
+    <summary>App Dashboard :mag:</summary>
+
+    ![image](https://github.com/Viridi-Machina/battleships/assets/146846939/fde9249a-f073-46af-aeff-ddf4b7d6aacf)
+  </details>
+  
+- Within the `Settings` menu, navigate to `Config Vars` (Also known as *Environment Variables*).<br>
+  This is where private and sensitive data, such as credentials and keys, will be stored for the project.
+  <details>
+    <summary>App Settings :mag:</summary>
+
+    ![image](https://github.com/Viridi-Machina/battleships/assets/146846939/078e131f-0ec6-483f-9031-7049385cdad8)
+  </details>
+
+- If the project is dependant on a creds.json file, then this is where the data will be stored.
+- Click `Reveal Config Vars`. Type in the first `KEY`: 'CREDS'.<br>
+  For the `VALUE` paste in the contents of your creds.json file from the IDE that you are using.
+- It is also important to set another KEY, VALUE pair as `PORT`, `8000` respectively<br>
+  or the project may not properly deploy.
+  <details>
+    <summary>Config Vars :mag:</summary>
+    
+    ![image](https://github.com/Viridi-Machina/battleships/assets/146846939/0721287b-f32f-4b37-be16-ddcf1cfeb1c2)
+  </details>
+
+- Next, some `Buildpacks` will need to be added which will add further dependancies outisde of the project<br>
+  which will allow the deployment to run in a virtual environment.
+- First, click `Add buildpack` and select `python`. Then add `nodejs`. It is important that you do it in this order.<br>
+  The ordering however can be changed afterwords by dragging their burger icons within the buildpacks list.
+  <details>
+    <summary>Buildpacks :mag:</summary>
+ 
+    ![image](https://github.com/Viridi-Machina/battleships/assets/146846939/d7a30ca4-e36a-44eb-8e87-5626e84e7e25)
+  </details>
+</details>
+
+### Connect to GitHub and deploy:
+<details>
+  <summary>Method :purple_circle:</summary>
+
+  - Navigate to the `Deploy` menu. For `Deployment method` select GitHub. Finally, you can manually deploy the project.
+    <details>
+      <summary>Deploy Menu :mag:</summary>
+
+    ![image](https://github.com/Viridi-Machina/battleships/assets/146846939/9081df0b-d551-40f2-b9c1-f770b9d4a5fb)
+    </details>
+</details>
+
+**Environment Variables**
+
+
+
