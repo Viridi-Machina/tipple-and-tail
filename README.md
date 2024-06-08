@@ -19,6 +19,28 @@
 
 **Development**
 
+User Stories:
+- As a user, I want to view availability based on the selected date and party size, so that I can view available booking options.
+- As a user, I want to view a table plan of available tables, so that I can choose where to sit.
+- As a user, I want to see a list of available packages that I can add to my booking, so that I can customize my experience.
+- As a user, I want to review booking details before finalising the booking, so that I can check that everything is correct.
+- As a user, I want to provide personal details during the booking process, so that I can recieve confirmation via email.
+- As a user, I want to see an about page, so that I can learn more about the establisment before booking.
+- As a user, I want to view a drinks menu, so I can see what options are available before making a booking.
+- As a user, I want to be able to declare allergies when making a booking, so that the establishment is aware before arrival.
+- As a user, I want to see a map, so that I can see how far the establishment is from my current location.
+- As a user, I want to see confirmation of a successful booking, so that I have confidence a booking has been made.
+- As a user, I want to be able to edit a booking after it has been made, so that I can cancel or view my booking.
+- As a user, I want to review and leave comments on events that I have been to, so I can share my experience with others.
+
+- As an admin, I want to view and update details of a specific booking, so that I can handle enquiries and make changes.
+- As an admin, I want to manage user accounts, so I can maintain control over user access and disable accounts if necessary.
+- As an admin, I want to log in to a a secure admin panel, so that I can access the site's administrative features.
+- As an admin, I want to manage the about page, so I can ensure it remains up to date.
+- As an admin, I want to manage the events page, so I can add new events and moderate customer reviews.
+- As an admin, I want to manage the menu page, so that I can add/remove or update menu items and pictures.
+- As an admin, I want to tag certain booking packages, so that I can upsell and make them more appealing.
+
 **Data Models**
 
 ## Features
