@@ -11,8 +11,8 @@ As a **User** I want to **complete_task**, so that I can **receive_benefit**.
 
 ## Acceptance Criteria:
 
-- AC1:
+- **AC1**:
 
-- AC2:
+- **AC2**:
 
-- AC3:
+- **AC3**:
