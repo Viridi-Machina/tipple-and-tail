@@ -4,24 +4,38 @@
 ## By Jacen Green
 
 ## Summary
+Tipple & Tail is a small fictional late-night bar that that also hosts various musical events. Due to it's recent surge in popularity, they have outsourced work to a full-stack developer to create a website and booking system that will help them manage their increasing demands. The app is booking-management system that allows users to efficiently make bookings, check out various events being hosted and review any current reservations that have been made - giving aaccess to update or cancel if they require.
+
+A live link to the deployed app can be visited [here](url here).
 
 ## Process
 
 **Problem Statement**
+> You have a client who needs a website with booking functionality that allows their customers to create customizable bookings with various packages that the client wishes to promote. A special request has been made for specific tables to be chosen as repeat customers have preference on where they sit.
 
-**Research**
+📑 **Research**
 <details>
- <summary></summary>
- 
+ <summary> See detail</summary>
+
+With limited time to complete the project; data model, user story and wireframe planning have taken priority. However, core inspiration has been taken from the [Slug & Lettuce](https://www.slugandlettuce.co.uk/market-square-nottingham/party-booking) booking page:
+
+![image](https://github.com/Viridi-Machina/tipple-and-tail/assets/146846939/50b968e6-e6a5-4aee-94c5-df4ea8b9d044)
+
+- First fields used are party-size and date.
+- Calendar widget for quickly selecting a date.
+- Drop-down list with booking package-options.
+- Selected fields then filter available time slots
+
+These elements would make up the core booking form process, with further additions such as table choice being implemented.
 </details>
 
-**Design**
+💠 **Design**
 
-**Development**
+💠 **Development**
 
 User Stories:
 <details>
- <summary>🔵 See User Stories (User)</summary>
+ <summary>🔵 See User Stories (User) 🔍</summary>
  
 - [US-U01] 🔵 As a user, I want to view availability based on the selected date and party size,<br>
   so that I can view available booking options.
@@ -64,7 +78,7 @@ User Stories:
 </details>
 
 <details>
- <summary> 🟣 See User Stories (Admin)</summary>
+ <summary> 🟣 See User Stories (Admin) 🔍</summary>
  
 - [US-A01] 🟣 As an admin, I want to view and update details of a specific booking,<br>
   so that I can handle enquiries and make changes.
@@ -88,7 +102,35 @@ User Stories:
   so that I can upsell and make them more appealing.
 </details>
 
-**Data Models**
+💠 **Data Models**
+<details>
+ <summary> See detail</summary>
+The data models created for this project are displayed in the image below:<br>
+<br>
+ 
+![image](https://github.com/Viridi-Machina/tipple-and-tail/assets/146846939/32bd5dc3-416c-47c0-a5be-0e69152fd14d)
+
+<br>
+
+The data models can be divided into 3 main apps to separate functionality:<br>
+🔷 **User App**: This app handles user accounts as well as their enquiries and comments made to event posts.<br>
+🔹 `User` - This model represents any user account, containing their name, email adress, mobile number, bookings and account status.<br>
+🔹 `Enquiry` - This model represents enquiries made by the user, containing messages submitted to the site admin.<br>
+🔹 `Comment` - This model represents comments made by the user on posted events, requiring approval by an admin.<br>
+<br>
+🟣 **About App**: This app handles the about and event models, both handled by the site admin.<br>
+🔺 `About` - This model represents an about page, filled out and updated byu the site admin.<br>
+🔺 `Event` - This model represents an events page, a psuedo blog-post view which displays events that can link to bookings.<br>
+<br>
+🔶 **Booking App**: This app handles the booking process; filtering available tables, timeslots and booking packages.<br>
+🔸`Booking` - This model represents the core booking process, storing all associated fields.<br>
+🔸`Table` - This model stores a small number of tables with unique table numbers and capacity which can be updated by an admin.<br>
+🔸`TimeSlot` - This model represents the chosen time slot to be applied to the booking and table.<br>
+🔸`TableSlot` - This model represents the specific tables with a chosen TimeSlot and TableSlot.<br>
+🔸`Package` - This model represents additional extras for booking customization, which are also used to tag bookings.<br>
+
+
+</details>
 
 ## Features
 **CRUD Functionality**
