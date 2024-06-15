@@ -58,6 +58,9 @@ User Stories:
   
 - [US-U12] 🔵 As a user, I want to review and leave comments on events that I have been to,<br>
   so I can share my experience with others.
+
+- [US-U13] 🔵 As a user, I want to send enquiries to the establishment, <br>
+  so I can ask further questions or enquire about larger bookings.
 </details>
 
 <details>
