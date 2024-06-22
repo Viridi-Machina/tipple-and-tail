@@ -172,7 +172,6 @@ JSHint
 PEP8
 
 ## Deployment
-**Local Deployment**
 **Heroku Deployment**
 <details>
  <summary>Method :purple_circle:</summary>
@@ -185,7 +184,7 @@ PEP8
   </details>
 
 - Enter a unique `App name` and `Choose a region`, then click `Create app`.<br>
-  Once created you navigate to the `Settings` menu.
+  Once created navigate to the `Settings` menu.
   <details>
     <summary>App Dashboard :mag:</summary>
 
@@ -201,40 +200,34 @@ PEP8
   </details>
 
 - If the project is dependant on a creds.json file, then this is where the data will be stored.
-- Click `Reveal Config Vars`. Type in the first `KEY`: 'CREDS'.<br>
-  For the `VALUE` paste in the contents of your creds.json file from the IDE that you are using.
-- It is also important to set another KEY, VALUE pair as `PORT`, `8000` respectively<br>
-  or the project may not properly deploy.
+- Click `Reveal Config Vars`. For initial deployment of a full-stack project:<br>
+  `KEY`: 'DISABLE_COLLECTSTATIC'. `VALUE` '1'<br>
+  This will prevent Heroku from uploading static files to the build.<br>
+  Later on, once the project has been configured with a local static file directory, this KEY/VALUE pair can be removed.
+- Note that any other secret keys such as links to the prject's database will be added as the project develops.<br>
+  The image below shows an example of the `config vars` panel used in a previous project.
   <details>
     <summary>Config Vars :mag:</summary>
     
     ![image](https://github.com/Viridi-Machina/battleships/assets/146846939/0721287b-f32f-4b37-be16-ddcf1cfeb1c2)
   </details>
 
-- Next, some `Buildpacks` will need to be added which will add further dependancies outisde of the project<br>
-  which will allow the deployment to run in a virtual environment.
-- First, click `Add buildpack` and select `python`. Then add `nodejs`. It is important that you do it in this order.<br>
-  The ordering however can be changed afterwords by dragging their burger icons within the buildpacks list.
-  <details>
-    <summary>Buildpacks :mag:</summary>
- 
-    ![image](https://github.com/Viridi-Machina/battleships/assets/146846939/d7a30ca4-e36a-44eb-8e87-5626e84e7e25)
-  </details>
-</details>
+- A final component required for successful deployment is the use of a `Procfile`:
+    - Heroku will read this file to determine how to start the server.
+    - Within the Procfile a python package called *gunicorn* is referenced as a production-ready webserver for Heroku to use.
+    - After installing gunicorn and adding it to the `requirements.txt` file, the following line of code needs to be added to
+      the Procfile `web: gunicorn my_project.wsgi`.
+    - Note that a blank line after the above code may be either required or need to be removed for Heroku to read it successfully.
 
 ### Connect to GitHub and deploy:
-<details>
-  <summary>Method :purple_circle:</summary>
 
-  - Navigate to the `Deploy` menu. For `Deployment method` select GitHub. Finally, you can manually deploy the project.
-    <details>
-      <summary>Deploy Menu :mag:</summary>
+- Navigate to the `Deploy` menu. For `Deployment method` select GitHub. Finally, you can manually deploy the project.
+  <details>
+    <summary>Deploy Menu :mag:</summary>
 
-    ![image](https://github.com/Viridi-Machina/battleships/assets/146846939/9081df0b-d551-40f2-b9c1-f770b9d4a5fb)
-    </details>
-</details>
+  ![image](https://github.com/Viridi-Machina/battleships/assets/146846939/9081df0b-d551-40f2-b9c1-f770b9d4a5fb)
+  </details>
 
-**Environment Variables**
 
 
 
