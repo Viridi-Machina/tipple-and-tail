@@ -1,29 +1,23 @@
 from django.db import models
-from about.models import Event 
+from django.contrib.auth.models import User
+from about.models import Event
 
-STATUS = ((0, "Active"), (1, "Restricted"), (2, "Inactive"))
+ACCOUNT_STATUS = ((0, "Active"), (1, "Restricted"), (2, "Inactive"))
 
 # A new user model has been created rather than using the default user model.
 # This is so that extra user information can be provided to the database,
-# including the account status and bookings made by the user.
+# including the account status, mobile number and bookings made by the user.
+# Default django groups will be used to manage account status.
 class TippleUser(models.Model):
-    first_name = models.CharField(max_length=15)
-    last_name = models.CharField(max_length=15)
-    email = models.EmailField(default="")
+    custom_user = models.ForeignKey(User, default=0, on_delete=models.CASCADE, related_name="custome_user")
     mobile = models.CharField()
-    # bookings foreign key
-    status = models.IntegerField(choices=STATUS, default=0)
+    # bookings = models.ForeignKey(booking_detail, on_delete=models.CASCADE, related_name="bookings")
+    status = models.IntegerField(choices=ACCOUNT_STATUS, default=0)
 
 
 class Comment(models.Model):
-    event = models.ForeignKey(
-        Event, on_delete=models.CASCADE, 
-        related_name="comments"
-    )
-    author = models.ForeignKey(
-        TippleUser, on_delete=models.CASCADE, 
-        related_name="commenter"
-    )
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(TippleUser, on_delete=models.CASCADE, related_name="commenter")
     body = models.TextField()
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
