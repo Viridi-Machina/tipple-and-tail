@@ -9,8 +9,8 @@ STATUS = ((0, "Active"), (1, "Restricted"), (2, "Inactive"))
 class TippleUser(models.Model):
     first_name = models.CharField(max_length=15)
     last_name = models.CharField(max_length=15)
-    email = models.EmailField
-    mobile = models.IntegerField()
+    email = models.EmailField(default="")
+    mobile = models.CharField()
     # bookings foreign key
     status = models.IntegerField(choices=STATUS, default=0)
 
@@ -39,10 +39,10 @@ class Comment(models.Model):
 class Enquiry(models.Model):
     first_name = models.CharField(max_length=15)
     last_name = models.CharField(max_length=15)
-    email = models.EmailField
-    mobile = models.IntegerField()
+    email = models.EmailField(default="")
+    mobile = models.CharField()
     message = models.TextField()
     read = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"Enquiry from {self.name}"
+        return f"Enquiry from {self.first_name}"
