@@ -1,6 +1,15 @@
 from django.contrib import admin
+from django_summernote.admin import SummernoteModelAdmin
 from .models import About, Event
 
-# Register your models here.
+# Model Registry (class)
+@admin.register(Event)
+class EventAdmin(SummernoteModelAdmin):
+    list_display = ('title', 'status')
+    search_fields = ['title']
+    list_filter = ('status',)
+    prepopulated_fields = {'slug': ('title',)}
+    summernote_fields = ('content',)
+
+# Model Registry
 admin.site.register(About)
-admin.site.register(Event)
