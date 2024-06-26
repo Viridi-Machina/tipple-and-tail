@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+from .models import Event
 
-# Create your views here.
-def home_page(request):
-    return HttpResponse("This will be the home page")
+
+class EventList(generic.ListView):
+    queryset = Event.objects.all().order_by("-event_date")
+    template_name = "event_list.html"

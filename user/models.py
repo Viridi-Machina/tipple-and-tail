@@ -9,10 +9,10 @@ ACCOUNT_STATUS = ((0, "Active"), (1, "Restricted"), (2, "Inactive"))
 # including the account status, mobile number and bookings made by the user.
 # Default django groups will be used to manage account status.
 class TippleUser(models.Model):
-    custom_user = models.ForeignKey(User, default=0, on_delete=models.CASCADE, related_name="custome_user")
+    custom_user = models.OneToOneField(User, default=0, on_delete=models.CASCADE, related_name="custome_user")
     mobile = models.CharField()
     # bookings = models.ForeignKey(booking_detail, on_delete=models.CASCADE, related_name="bookings")
-    status = models.IntegerField(choices=ACCOUNT_STATUS, default=0)
+    # status = models.IntegerField(choices=ACCOUNT_STATUS, default=0)
 
 
 class Comment(models.Model):
