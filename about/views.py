@@ -5,4 +5,4 @@ from .models import Event
 
 class EventList(generic.ListView):
     queryset = Event.objects.all().order_by("-event_date")
-    template_name = "event_list.html"
+    template_name = "about/index.html"
