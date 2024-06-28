@@ -6,7 +6,7 @@
 ## Summary
 Tipple & Tail is a small fictional late-night bar that that also hosts various musical events. Due to it's recent surge in popularity, they have outsourced work to a full-stack developer to create a website and booking system that will help them manage their increasing demands. The app is booking-management system that allows users to efficiently make bookings, check out various events being hosted and review any current reservations that have been made - giving aaccess to update or cancel if they require.
 
-A live link to the deployed app can be visited [here](url here).
+A live link to the deployed app can be visited [here](https://tipple-and-tail-7dca6c4d30d7.herokuapp.com/).
 
 ## Process
 
