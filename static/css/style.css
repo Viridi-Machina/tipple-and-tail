@@ -20,11 +20,14 @@
     top: 0;
 }
 
+/* Style for flavour text on home screen below main logo */
 .text-glow-yellow {
     text-shadow: 0px 0px 10px rgb(255, 225, 89);
 }
 
-nav a:hover {
+/* Navbar hover styling */
+nav a:hover,
+.active {
     text-shadow: 0px 0px 5px rgb(255, 225, 89);
     color: rgb(255, 242, 183);
 }

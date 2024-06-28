@@ -1,5 +1,5 @@
 from django.db import models
-from user.models import TippleUser
+from django.contrib.auth.models import User
 from about.models import Event
 from .constants import STATUS, TAKEN, TIME_SLOT_OPTIONS
 
@@ -40,7 +40,7 @@ class Package(models.Model):
 
 class Booking(models.Model):
     user_id = models.ForeignKey(
-        TippleUser, on_delete=models.CASCADE, related_name="bookings")
+        User, on_delete=models.CASCADE, related_name="bookings")
     date = models.DateField(auto_now_add=True)
     guests = models.SmallIntegerField(default=2)
     table_id = models.ManyToManyField(TableSlot)
@@ -49,7 +49,7 @@ class Booking(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="event")
     allergies = models.BooleanField(default=False)
     special = models.CharField(max_length=250)
-    created_by = models.ForeignKey(TippleUser, on_delete=models.CASCADE, related_name="user")
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user")
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
 
