@@ -1,8 +1,13 @@
+<!-- Custom and template static load -->
 {% load static %}
 {% load static tailwind_tags %}
-
+<!-- Internal links -->
 {% url 'home' as home_url %}
 {% url 'events' as events_url %}
+<!-- allauth links -->
+{% url 'account_login' as login_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_logout' as logout_url %}
 
 
 <!DOCTYPE html>
@@ -67,9 +72,21 @@
                     </div>
                     <!-- Container for register and login elements (right) -->
                     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                        <a href="#" class="text-sm font-thin leading-6 text-white">REGISTER</a>
-                        <span class="text-sm font-normal leading-6 text-white px-1"> | </span>
-                        <a href="#" class="text-sm font-semibold leading-6 text-white">LOG IN <span aria-hidden="true">&rarr;</span></a>
+                    {% if user.is_authenticated %}
+                        <!-- [You are logged in as <user> | LOGOUT] -->
+                        <span class="text-sm font-thin leading-6 text-white px-1 active">You are logged in as {{ user }}</span>
+                        <span class="text-sm font-normal leading-6 text-white px-1">|</span>
+                        <a href="{% url 'account_logout' %}" class="text-sm font-thin leading-6 text-white
+                        {% if request.path == logout_url %}active{% endif %}" aria-current="page">LOGOUT <i class="fa-solid fa-door-open"></i></a>
+                    {% else %}
+                        <!-- Register account -->
+                        <a href="{% url 'account_signup' %}" class="text-sm font-thin leading-6 text-white
+                        {% if request.path == signup_url %}active{% endif %}" aria-current="page">REGISTER</a>
+                        <span class="text-sm font-normal leading-6 text-white px-1">|</span>
+                        <!-- Log in to account -->
+                        <a href="{% url 'account_login' %}" class="text-sm font-semibold leading-6 text-white
+                        {% if request.path == login_url %}active{% endif %}">LOG IN <span aria-hidden="true">&rarr;</span></a>
+                    {% endif %}
                     </div>
                 </nav>
                 <!-- Navbar transparent strip -->
@@ -118,7 +135,13 @@
         <!-- Footer -->
 
         <script src="https://kit.fontawesome.com/8504e83294.js" crossorigin="anonymous"></script>
-
+        <script type="text/javascript">
+            window.onload = function () {
+                setTimeout(function() {
+                    document.getElementById("body").style.display = "";        
+                }, 200);
+            }
+        </script>
         <script src="{% static 'js/script.js' %}"></script>
     </body>
 </html>

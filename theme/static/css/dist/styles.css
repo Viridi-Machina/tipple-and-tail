@@ -877,8 +877,16 @@ select {
   top: 5rem;
 }
 
+.top-40 {
+  top: 10rem;
+}
+
 .top-\[calc\(100\%-13rem\)\] {
   top: calc(100% - 13rem);
+}
+
+.top-36 {
+  top: 9rem;
 }
 
 .isolate {
@@ -952,8 +960,16 @@ select {
   margin-top: 1.5rem;
 }
 
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
 .block {
   display: block;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 .flex {
@@ -962,6 +978,10 @@ select {
 
 .inline-flex {
   display: inline-flex;
+}
+
+.table {
+  display: table;
 }
 
 .flow-root {
@@ -984,6 +1004,10 @@ select {
 .size-96 {
   width: 24rem;
   height: 24rem;
+}
+
+.h-36 {
+  height: 9rem;
 }
 
 .h-4 {
@@ -1010,6 +1034,10 @@ select {
   height: 100vh;
 }
 
+.h-2 {
+  height: 0.5rem;
+}
+
 .w-4 {
   width: 1rem;
 }
@@ -1034,8 +1062,24 @@ select {
   width: 100%;
 }
 
+.w-24 {
+  width: 6rem;
+}
+
+.min-w-20 {
+  min-width: 5rem;
+}
+
 .max-w-2xl {
   max-width: 42rem;
+}
+
+.max-w-md {
+  max-width: 28rem;
+}
+
+.max-w-lg {
+  max-width: 32rem;
 }
 
 .flex-auto {
@@ -1060,6 +1104,14 @@ select {
   transform: translate3d(var(--tw-translate-x), var(--tw-translate-y), 0) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -1078,6 +1130,10 @@ select {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
 }
 
 .gap-2 {
@@ -1145,22 +1201,31 @@ select {
   border-radius: 0.75rem;
 }
 
-.border {
-  border-width: 1px;
+.border-2 {
+  border-width: 2px;
+}
+
+.border-y-2 {
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+}
+
+.border-x-2 {
+  border-left-width: 2px;
+  border-right-width: 2px;
 }
 
 .border-t-2 {
   border-top-width: 2px;
 }
 
+.border-solid {
+  border-style: solid;
+}
+
 .border-black {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
-}
-
-.border-gray-300 {
-  --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
 
 .bg-black {
@@ -1186,6 +1251,26 @@ select {
 .bg-zinc-950 {
   --tw-bg-opacity: 1;
   background-color: rgb(9 9 11 / var(--tw-bg-opacity));
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-slate-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 250 252 / var(--tw-bg-opacity));
+}
+
+.bg-slate-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+}
+
+.bg-slate-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-tr {
@@ -1286,6 +1371,21 @@ select {
   padding-bottom: 1.5rem;
 }
 
+.py-0 {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .pb-16 {
   padding-bottom: 4rem;
 }
@@ -1300,6 +1400,46 @@ select {
 
 .pt-8 {
   padding-top: 2rem;
+}
+
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
+.pt-6 {
+  padding-top: 1.5rem;
+}
+
+.pt-10 {
+  padding-top: 2.5rem;
+}
+
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
+.pb-5 {
+  padding-bottom: 1.25rem;
+}
+
+.pl-6 {
+  padding-left: 1.5rem;
+}
+
+.pl-3 {
+  padding-left: 0.75rem;
+}
+
+.pr-3 {
+  padding-right: 0.75rem;
+}
+
+.pb-8 {
+  padding-bottom: 2rem;
 }
 
 .text-center {
@@ -1335,6 +1475,16 @@ select {
   line-height: 1.75rem;
 }
 
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
 .font-light {
   font-weight: 300;
 }
@@ -1349,6 +1499,10 @@ select {
 
 .font-thin {
   font-weight: 100;
+}
+
+.font-bold {
+  font-weight: 700;
 }
 
 .leading-6 {
@@ -1369,6 +1523,10 @@ select {
 
 .tracking-wide {
   letter-spacing: 0.025em;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
 }
 
 .text-cyan-100 {
@@ -1406,9 +1564,24 @@ select {
   color: rgb(254 249 195 / var(--tw-text-opacity));
 }
 
-.text-purple-200 {
+.text-zinc-700 {
   --tw-text-opacity: 1;
-  color: rgb(233 213 255 / var(--tw-text-opacity));
+  color: rgb(63 63 70 / var(--tw-text-opacity));
+}
+
+.text-orange-600 {
+  --tw-text-opacity: 1;
+  color: rgb(234 88 12 / var(--tw-text-opacity));
+}
+
+.text-orange-300 {
+  --tw-text-opacity: 1;
+  color: rgb(253 186 116 / var(--tw-text-opacity));
+}
+
+.text-red-400 {
+  --tw-text-opacity: 1;
+  color: rgb(248 113 113 / var(--tw-text-opacity));
 }
 
 .opacity-30 {

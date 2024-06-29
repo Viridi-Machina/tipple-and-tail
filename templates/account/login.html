@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block content %}
+<div class="relative bg-zinc-950 opacity-75 rounded-2xl mx-auto max-w-2xl top-36">
+    <div class="px-6 pt-8 lg:px-8">
+        <div class="mx-auto max-w-2xl pb-10 text-white">
+            <h1 class="text-4xl text-center text-yellow-100 text-glow-yellow">Log In</h1>
+
+            <p class="pt-10">{% blocktrans %}Welcome back to Tipple & tail. To leave a comment or like a post, please log in. If
+                you have not created an account yet, then <a class="text-yellow-100 hover-glow font-semibold" href="{{ signup_url }}">sign up</a>
+                first.{% endblocktrans %}</p>
+        </div>
+    </div>
+    <div class="px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl pb-5 text-yellow-100">
+            <form class="login" method="POST" action="{% url 'account_login' %}">
+                {% csrf_token %}
+                <!-- Display form errors with custom form styling -->
+                <!-- Help from stack overflow for solution: https://stackoverflow.com/questions/24273839/django-allauth-custom-login-does-not-show-errors -->
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-error pb-5">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-error pb-5">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <!-- Form elements taken from chrome devtools view of {{ form.as_p }} -->
+                <div class="py-2">
+                    <label class="inline-block w-24" for="id_login">Username:</label>
+                    <input class="text-zinc-700 rounded-2xl py-0" name="login" placeholder="Username" autocomplete="username" maxlength="150" required="" id="id_login">
+                </div>
+                <div class="py-2">
+                    <label class="inline-block w-24" for="id_password">Password:</label>
+                    <input class="text-zinc-700 rounded-2xl py-0" type="password" name="password" placeholder="Password" autocomplete="current-password" required="" aria-describedby="id_password_helptext" id="id_password">
+                    <span class="helptext pl-6" id="id_password_helptext"><a href="/accounts/password/reset/">Forgot your password?</a></span>
+                </div>
+                <div class="py-2">
+                    <label class="inline-block pr-3" for="id_remember">Remember Me:</label>
+                    <input type="checkbox" name="remember" id="id_remember">
+                </div>
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <div class="text-center">
+                    <button class="px-6 text-2xl border-y-2 border-x-2 rounded-full text-yellow-100 hover-glow font-semibold tracking-wide" type="submit">SIGN IN</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
