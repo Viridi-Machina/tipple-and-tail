@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "New"), (1, "Expired"))
 
@@ -13,11 +14,11 @@ class About(models.Model):
     
 
 class Event(models.Model):
-    title = models.CharField(max_length=150, unique=True)
-    slug = models.SlugField(max_length=150, unique=True)
+    title = models.CharField(max_length=150, unique=False)
+    slug = models.SlugField(max_length=150, unique=False)
+    event_image = CloudinaryField('image', default='placeholder')
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    excerpt = models.TextField(blank=True)
     event_date = models.DateTimeField()
     status = models.IntegerField(choices=STATUS, default=0)
 
