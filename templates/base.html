@@ -10,7 +10,7 @@
 
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
         <title>Tipple & tail</title>
 
@@ -19,9 +19,6 @@
         <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
         <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
         <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
-
-        <!-- Font Awesome CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
         <!-- Tailwind CSS -->
         {% tailwind_css  %}
@@ -32,6 +29,7 @@
     </head>
 
     <body>
+        <!-- Adapted from tailwinf official example https://tailwindui.com/components/marketing/sections/heroes -->
         <div class="tipple-hero">
             <img class="fixed overflow-y-hidden -z-10" src="{% static 'images/gold-dark-bg.jpeg' %}" alt="Background">
             <header class="absolute inset-x-0 top-0 z-50 nav-position">
@@ -62,7 +60,7 @@
                         <a href="#" class="text-sm font-light leading-6 text-white">CONTACT</a>
                         <!-- Bookings -->
                         <a href="#" class="text-sm font-light leading-6 text-white
-                        {% if request.path == home_url %}active{% endif %}">BOOKINGS</a>
+                        {% if request.path == bookings_url %}active{% endif %}">BOOKINGS</a>
                         <!-- Events -->
                         <a href="{% url 'events' %}" class="text-sm font-light leading-6 text-white
                         {% if request.path == events_url %}active{% endif %}">EVENTS</a>
@@ -78,7 +76,7 @@
                 <div class="bg-zinc-800 relative h-8 w-full nav-block -z-10 opacity-75"></div>
 
                 <!-- Mobile menu, show/hide based on menu open state. -->
-                <div class="lg:hidden" role="dialog" aria-modal="true">
+                <div class="hidden" role="dialog" aria-modal="true">
                     <!-- Background backdrop, show/hide based on slide-over state. -->
                     <div class="fixed inset-0 z-50"></div>
                     <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-zinc-800 opacity-95 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
@@ -118,6 +116,8 @@
 
 
         <!-- Footer -->
+
+        <script src="https://kit.fontawesome.com/8504e83294.js" crossorigin="anonymous"></script>
 
         <script src="{% static 'js/script.js' %}"></script>
     </body>

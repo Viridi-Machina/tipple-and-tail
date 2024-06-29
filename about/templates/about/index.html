@@ -2,26 +2,74 @@
 {% load static %}
 {% block content %}
 
-<div class="relative isolate px-6 pt-8 lg:px-8">
-    <div class="absolute inset-x-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
-        <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ffcf32] to-[#9a89fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
-    </div>
-    <div class="mx-auto max-w-2xl py-20 sm:py-48 lg:py-56">
-        <div class="flex justify-center items-center">
-            <img class="size-72" src="{% static 'images/home-brand.png' %}">
+<div class="flex-auto">
+    <!-- Dashboard logo with booking and menu links -->
+    <div class="relative isolate px-6 pt-8 lg:px-8">
+        <!-- Colour splash 1 -->
+        <div class="absolute inset-x-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+            <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ffcf32] to-[#9a89fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
         </div>
-        <div class="flex"></div>
-        <div class="text-center">
-            <h2 class="text-base font-thin tracking-wide text-yellow-100 text-glow-yellow border-t-2 border-black pt-4 sm:text-2xl">Cocktails | Nightcub | Music & Events</h2>
-            <div class="mt-10 flex items-center justify-center gap-x-6">
-                <a href="#" class="rounded-full bg-black opacity-85 lg:min-w-8 px-8 py-1 text-lg text-white shadow-sm button-glow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Book a Table</a>
-                <a href="#" class="rounded-full bg-black opacity-85 lg:min-w-8 px-8 py-1 text-lg text-white shadow-sm button-glow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">View Menu</a>
+        <div class="mx-auto max-w-2xl pt-12 sm:pt-20 lg:pt-24">
+            <div class="flex justify-center items-center">
+                <img class="logo-size" src="{% static 'images/home-brand.png' %}">
+            </div>
+            <div class="text-center">
+                <h2 class="text-base font-thin tracking-wide text-yellow-100 text-glow-yellow border-t-2 border-black pt-4 sm:text-2xl">Cocktails | Nightcub | Music & Events</h2>
+                <div class="mt-10 flex items-center justify-center gap-x-6">
+                    <a href="#" class="rounded-full bg-black opacity-85 lg:min-w-8 px-8 py-1 text-lg text-white shadow-sm button-glow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Book a Table</a>
+                    <a href="#" class="rounded-full bg-black opacity-85 lg:min-w-8 px-8 py-1 text-lg text-white shadow-sm button-glow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">View Menu</a>
+                </div>
+            </div>
+        </div>
+        <!-- Colour splash 2 -->
+        <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
+            <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+        </div>
+    </div>
+
+    <!-- About section -->
+    <div class="isolate px-6 pt-8 lg:px-8">
+        <div class="mx-auto max-w-2xl pt-8 sm:pt-10 lg:pt-36">
+            <div class="flex justify-center items-center relative -left-64 top-20">
+                <img class="size-96" src="{% static 'images/about.png' %}">
+            </div>
+            <div class="rounded-2xl p-3 text-purple-100 relative -top-48 left-2 bg-zinc-950 opacity-85 -z-20">
+                <h2 class="font-semibold text-lg">
+                    {{ about.title }}
+                </h2>
+                    {{ about.content | safe }}
+            </div>
+            <div class="text-center relative -top-36">
+                <h2 class="text-base font-thin tracking-wide text-purple-100 text-glow-purple pt-4 sm:text-2xl">Check out our events here!</h2>
+                <div class="mt-10 flex items-center justify-center gap-x-6">
+                    <a href="{% url 'events' %}" class="rounded-full bg-black opacity-85 lg:min-w-8 px-8 py-1 text-lg text-white shadow-sm event-glow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">View Events</a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
-        <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+
+    <!-- Contact section -->
+    <div class="isolate px-6 pt-8 lg:px-8">
+        <div class="mx-auto max-w-2xl pt-8 sm:pt-10 lg:pt-36 contact-max">
+            <div class="flex justify-center items-center -z-30">
+                <img class="size-96 relative -top-24 right-64" src="{% static 'images/contact.png' %}">
+            </div>
+            <div class="rounded-2xl p-3 text-cyan-100 contact-pos relative left-2 bg-zinc-950 opacity-85">
+                <h2 class="font-semibold text-lg">
+                    {{ about.title }}
+                </h2>
+                    {{ about.content | safe }}
+            </div>
+            <div class="text-center relative pb-16 -top-40">
+                <h2 class="text-base font-thin tracking-wide text-cyan-100 text-glow-cyan pt-4 sm:text-2xl">We'll get back to you soon!</h2>
+                <div class="mt-10 flex items-center justify-center gap-x-6">
+                    <a href="#" class="rounded-full bg-black opacity-85 lg:min-w-8 px-8 py-1 text-lg text-white shadow-sm contact-glow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"><i class="fa-solid fa-paper-plane"></i> Submit Enquiry</a>
+                </div>
+            </div>
+        </div>
     </div>
+    
 </div>
+
 
 {% endblock %}

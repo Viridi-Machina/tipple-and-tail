@@ -11,5 +11,6 @@ class EventAdmin(SummernoteModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('content',)
 
-# Model Registry
-admin.site.register(About)
+@admin.register(About)
+class AboutAdmin(SummernoteModelAdmin):
+    summernote_fields = ('content',)

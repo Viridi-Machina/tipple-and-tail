@@ -1,12 +1,24 @@
 from django.shortcuts import render
-from django.views import generic
-from .models import Event
+from .models import Event, About
 
-
-class EventList(generic.ListView):
-    queryset = Event.objects.all().order_by("-event_date")
-    template_name = "about/event_list.html"
 
 def about(request):
-    return render(request, "about/index.html")
+    """
+    Renders the about section on the home dashboard.
+    """
+    about = About.objects.all().first()
+
+    return render(request, "about/index.html", {"about": about},)
+
+
+def event_list(request):
+    """
+    Renders the events list page.
+    """
+    events = Event.objects.all().order_by("-event_date")
+    context = {
+        "events": events,
+    }
+
+    return render(request, "about/event_list.html", context,)
 

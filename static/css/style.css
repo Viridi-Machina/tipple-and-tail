@@ -4,6 +4,11 @@
     left: -20px;
 }
 
+.logo-size {
+    width:300px;
+    height:300px;
+}
+
 .nav-position {
     top: -40px;
 }
@@ -20,9 +25,25 @@
     top: 0;
 }
 
+.contact-pos {
+    top: -340px;
+}
+
+.contact-max {
+    max-height: 600px;
+}
+
 /* Style for flavour text on home screen below main logo */
 .text-glow-yellow {
     text-shadow: 0px 0px 10px rgb(255, 225, 89);
+}
+
+.text-glow-purple {
+    text-shadow: 0px 0px 10px rgb(213, 76, 255);
+}
+
+.text-glow-cyan {
+    text-shadow: 0px 0px 10px rgb(74, 237, 255);
 }
 
 /* Navbar hover styling */
@@ -35,4 +56,14 @@ nav a:hover,
 .button-glow:hover {
     box-shadow: 0 0 10px rgb(255, 225, 89);
     color: rgb(255, 242, 183);
+}
+
+.event-glow:hover {
+    box-shadow: 0 0 10px rgb(213, 76, 255);
+    color: rgb(243 232 255);
+}
+
+.contact-glow:hover {
+    box-shadow: 0 0 10px rgb(74, 237, 255);
+    color: rgb(165 243 252);
 }
