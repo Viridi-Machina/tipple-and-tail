@@ -1,38 +1,65 @@
-{% extends "account/base_entrance.html" %}
+{% extends "base.html" %}
 {% load allauth i18n %}
-{% block head_title %}
-    {% trans "Signup" %}
-{% endblock head_title %}
+
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Up" %}
-    {% endelement %}
-    {% setvar link %}
-        <a href="{{ login_url }}">
-        {% endsetvar %}
-        {% setvar end_link %}
-        </a>
-    {% endsetvar %}
-    {% element p %}
-        {% blocktranslate %}Already have an account? Then please {{ link }}sign in{{ end_link }}.{% endblocktranslate %}
-    {% endelement %}
-    {% if not SOCIALACCOUNT_ONLY %}
-        {% url 'account_signup' as action_url %}
-        {% element form form=form method="post" action=action_url tags="entrance,signup" %}
-            {% slot body %}
+
+<div class="relative bg-zinc-950 opacity-75 rounded-2xl mx-auto max-w-2xl top-36">
+    <div class="px-6 pt-8 lg:px-8">
+        <div class="text-center mx-auto max-w-2xl pb-10 text-white">
+            <h1 class="text-4xl text-yellow-100 text-glow-yellow">Sign Up</h1>
+
+            <p class="pt-10">Already have an account? Then please <a class="text-yellow-100 hover-glow font-semibold" href="/accounts/login/">sign in</a>.</p>
+    
+        </div>
+    </div>
+    <div class="px-6 lg:px-8">
+        <div class="flex justify-center mx-auto max-w-2xl pb-5 text-yellow-100">
+            <form method="post" action="/accounts/signup/">
                 {% csrf_token %}
-                {% element fields form=form unlabeled=True %}
-                {% endelement %}
-                {{ redirect_field }}
-            {% endslot %}
-            {% slot actions %}
-                {% element button tags="prominent,signup" type="submit" %}
-                    {% trans "Sign Up" %}
-                {% endelement %}
-            {% endslot %}
-        {% endelement %}
-    {% endif %}
-    {% if SOCIALACCOUNT_ENABLED %}
-        {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
-    {% endif %}
+                <!-- Display form errors with custom form styling -->
+                <!-- Help from stack overflow for solution -->
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-error pb-5">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-error pb-5">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <div class="flex justify-center py-2">
+                    <label class="inline-block w-36" for="id_username">Username:</label>
+                    <input class="text-zinc-700 rounded-2xl py-0" type="text" name="username" placeholder="Username" autocomplete="username" minlength="1" maxlength="150" required="" id="id_username">
+                </div>
+                <div class="flex justify-center py-2">
+                    <label class="inline-block w-36" for="id_email">Email (optional):</label>
+                    <input class="text-zinc-700 rounded-2xl py-0" type="email" name="email" placeholder="Email address" autocomplete="email" maxlength="320" id="id_email">
+                </div>
+                <div class="flex justify-center py-2">
+                    <label class="inline-block w-36" for="id_password1">Password:</label>
+                    <input class="text-zinc-700 rounded-2xl py-0" type="password" name="password1" placeholder="Password" autocomplete="new-password" required="" aria-describedby="id_password1_helptext" id="id_password1">
+                    <span class="helptext" id="id_password1_helptext"></span></p>
+                </div>
+                <div class="flex justify-center py-2">
+                    <label class="inline-block w-36" for="id_password2">Password (again):</label>
+                    <input class="text-zinc-700 rounded-2xl py-0" type="password" name="password2" placeholder="Password (again)" autocomplete="new-password" required="" id="id_password2">
+                </div>
+                <ul class="py-12">
+                    <li>&rarr; Your password can’t be too similar to your other personal information.</li>
+                    <li>&rarr; Your password must contain at least 8 characters.</li>
+                    <li>&rarr; Your password can’t be a commonly used password.</li>
+                    <li>&rarr; Your password can’t be entirely numeric.</li>
+                </ul>
+                <div class="text-center">
+                    <button class="px-6 text-2xl border-y-2 border-x-2 rounded-full text-yellow-100 hover-glow font-semibold tracking-wide" type="submit">CREATE NEW ACCOUNT</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}
