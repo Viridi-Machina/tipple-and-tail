@@ -80,8 +80,3 @@ nav a:hover,
 html {
     scroll-behavior: smooth;
   }
-
-/* Form style override */
-form p input {
-    border-radius: 1rem;
-}

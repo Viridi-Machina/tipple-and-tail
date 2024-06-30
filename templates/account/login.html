@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load account socialaccount %}
+{% load static %}
 
 {% block content %}
 <div class="relative bg-zinc-950 opacity-75 rounded-2xl mx-auto max-w-2xl top-36">
@@ -9,9 +10,9 @@
         <div class="mx-auto max-w-2xl pb-10 text-white">
             <h1 class="text-4xl text-center text-yellow-100 text-glow-yellow">Log In</h1>
 
-            <p class="pt-10">{% blocktrans %}Welcome back to Tipple & tail. To leave a comment or like a post, please log in. If
+            <p class="pt-10">Welcome back to Tipple & tail. To leave a comment or like a post, please log in. If
                 you have not created an account yet, then <a class="text-yellow-100 hover-glow font-semibold" href="{{ signup_url }}">sign up</a>
-                first.{% endblocktrans %}</p>
+                first.</p>
         </div>
     </div>
     <div class="px-6 lg:px-8">
@@ -34,7 +35,7 @@
                         </div>
                     {% endfor %}
                 {% endif %}
-                <!-- Form elements taken from chrome devtools view of {{ form.as_p }} -->
+                <!-- Form elements taken from chrome devtools view of  'form.as_p'  -->
                 <div class="py-2">
                     <label class="inline-block w-24" for="id_login">Username:</label>
                     <input class="text-zinc-700 rounded-2xl py-0" name="login" placeholder="Username" autocomplete="username" maxlength="150" required="" id="id_login">
