@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import DeleteView, CreateView, UpdateView, ListView
 from django.contrib import messages
-from .models import Booking, Table, Package
+from .models import Booking, Table
 from .forms import BookingForm
 
 
@@ -22,10 +22,22 @@ class CreateBooking(LoginRequiredMixin, CreateView):
         Before form submission, assign table with lowest capacity
         needed for booking guests
         """
-        form.instance.booking_name = self.request.user
         date = form.cleaned_data['booking_date']
         time = form.cleaned_data['booking_slot']
         guests = form.cleaned_data['booking_size']
+
+        # Checks whether the logged-in user is staff or not.
+        # If true, then booking can be made under any name.
+        # 
+        # Otherwise, customer's name is given as default.
+        name_input = form.instance.booking_name
+        staff = self.request.user.is_staff
+        admin = self.request.user.is_superuser
+
+        if staff or admin :
+            name_input = name_input
+        else:
+            name_input = self.request.user
         
         # Filter tables with capacity greater than or equal
         # to the number of guests (using __gte method)

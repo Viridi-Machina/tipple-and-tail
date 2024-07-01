@@ -80,9 +80,13 @@ class BookingForm(forms.ModelForm):
                 )
         if not available_table:
             raise ValidationError('No tables available for this date and time')
+        if guests > 8:
+            raise ValidationError('Maximum booking size possible is 8')
 
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['booking_date'].widget.attrs['class'] = 'datepicker'
         self.fields['booking_date'].widget.attrs['autocomplete'] = 'off'
+        self.fields['package'].required = False
+        self.fields['special'].required = False

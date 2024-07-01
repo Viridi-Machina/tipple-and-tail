@@ -67,7 +67,7 @@
                             <td class="slot">{{ booking.get_booking_slot_display }}</td>
                             <td>{{ booking.booking_size }}</td>
                             {% if user.is_staff %}
-                            <td>{{ booking.booking_table }}</td>
+                            <td>{{ booking.booking_table.number }}</td>
                             <td>{{ booking.booking_table.capacity }}</td>
                             {% endif %}
                             <!-- Table links to edit or delete a booking - redirects to appropriate page -->
@@ -91,6 +91,6 @@
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
-<script>$('.datepicker').datepicker({minDate: 0, showOtherMonths: true, selectOtherMonths: true});</script>
-<!-- { dateFormat: 'YYYY-MM-DD' }, -->
+<script>$('.datepicker').datepicker({dateFormat: 'yy-mm-dd', minDate: 0, showOtherMonths: true, selectOtherMonths: true});</script>
+
 {% endblock %}

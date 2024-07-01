@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-
+{{ request.user.first_name|json_script:"username" }}
 <div class="container max-w-2xl top-36 mb-64">
     <div class="px-6 pt-8 lg:px-8">
         <div class="mx-auto max-w-96 pb-10 text-white">
@@ -20,6 +20,13 @@
         <div class="mx-auto max-w-2xl pb-11 text-yellow-100">
             <form method="POST" action="{% url 'createbooking' %}" enctype="multipart/form-data">
                 {% csrf_token %}
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <p> {{ error }} </p>
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
                 {% for field in form %}
                     <div class="py-2">
                         {{ field.errors }}
@@ -42,9 +49,12 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block scripts %}
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
-<script>$('.datepicker').datepicker(value="d MM, y", { minDate: 0, showOtherMonths: true, selectOtherMonths: true});</script>
-
+<script>$('.datepicker').datepicker({dateFormat: 'yy-mm-dd', minDate: 0, showOtherMonths: true, selectOtherMonths: true});</script>
 {% endblock %}
+

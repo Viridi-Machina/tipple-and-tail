@@ -1,4 +1,50 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/booking.css' %}">
+{% endblock %}
+
 {% block content %}
+
+<div class="container max-w-2xl top-36 mb-64">
+    <div class="px-6 pt-8 lg:px-8">
+        <div class="mx-auto max-w-96 pb-10 text-white">
+            <h1 class="text-4xl text-center text-yellow-100 text-glow-yellow">Create Booking</h1>
+
+            <p class="pt-10">Welcome to the Tipple & tail booking page. 
+                To create a booking please fill all required fields below.</p>
+        </div>
+    </div>
+    <div class="flex justify-center px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl pb-11 text-yellow-100">
+            <form method="POST" action="{% url 'editbooking' booking.id %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="py-2">
+                        {{ field.errors }}
+                        {{ field.label_tag }} {{ field }}
+                        {% if field.help_text %}
+                            <p class="help" id="{{ field.auto_id }}_helptext">
+                                {{ field.help_text|safe }}
+                            </p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <!-- {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %} -->
+                <div class="text-center pt-7">
+                    <button class="text-yellow-100 hover-glow" type="submit">Edit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+<link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
+<script>$('.datepicker').datepicker({dateFormat: 'yy-mm-dd', minDate: 0, showOtherMonths: true, selectOtherMonths: true});</script>
+
 {% endblock %}
