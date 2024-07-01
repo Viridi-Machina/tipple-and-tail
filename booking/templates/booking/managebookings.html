@@ -7,121 +7,90 @@
 
 {% block content %}
 
-<div class="container max-w-2xl top-36 mb-64">
+<div class="container max-w-4xl top-36 mb-64">
     <div class="px-6 pt-8 lg:px-8">
         <div class="mx-auto max-w-96 pb-10 text-white">
             <h1 class="text-4xl text-center text-yellow-100 text-glow-yellow">Manage Bookings</h1>
 
-            <p class="pt-10 flex justify-center">View and edit your bookings here.</p>
+            <p class="pt-10 text-center">
+                View and edit your bookings.<br>If you want to create a new booking click
+                <a class="text-yellow-100 hover-glow font-semibold" href="{% url 'createbooking' %}">here</a>.
+            </p>
         </div>
     </div>
-    <div class="flex justify-center px-6 lg:px-8">
+    <div class="px-6 lg:px-8">
         <div class="mx-auto max-w-2xl pb-11 text-yellow-100">
-            <form method="POST" action="{% url 'createbooking' %}" enctype="multipart/form-data">
             <!-- Search querys -->
             {% if request.user.is_staff %}
-                <form method='GET' class="mb-3">
-                    <input type='text' name='q' value='{{ request.GET.q }}' autocomplete="off" aria-label="Search Booking by reference"
-                        placeholder="Search Booking Ref">
-                    <button class="btn p-0 search-btn" type='submit' value="Search Booking by ref" aria-label="Click to search by booking ref">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-                <form method='GET' class="mb-3">
-                    <input type='text' name='d' value='{{ request.GET.d }}' class="datepicker" autocomplete="off" aria-label="Search Bookings by date"
-                        placeholder="Search Booking Date">
-                    <button class="btn p-0 search-btn" type='submit' value="Search Booking by ref" aria-label="Click to search by date">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-            {% endif %}
-                <div class="text-center pt-7">
-                    <button class="hidden text-yellow-100 hover-glow" type="submit">BOOK</button>
+                <div class="flex flex-row justify-evenly">
+                    <form method='GET' class="text-center py-2">
+                        <input type='text' name='q' value='{{ request.GET.q }}' autocomplete="off" aria-label="Search Booking by reference"
+                            placeholder="Search Booking Ref">
+                        <button class="button-search hover-glow p-0" type='submit' value="Search Booking by ref" aria-label="Click to search by booking ref">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                    <form method='GET' class="text-center py-2 pb-11">
+                        <input type='text' name='d' value='{{ request.GET.d }}' class="datepicker" autocomplete="off" aria-label="Search Bookings by date"
+                            placeholder="Search Booking Date">
+                        <button class="button-search hover-glow p-0" type='submit' value="Search Booking by ref" aria-label="Click to search by date">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
                 </div>
-            </form>
+            {% endif %}
+            <!-- Manage bookings table -->
+            <div class="bg-zinc-600 solid rounded-3xl max-w-fit mx-auto">
+                <h1 class="text-2xl text-center py-2 font-semibold">Your Bookings</h1>
+                <table class="">
+                    <thead class="top-row">
+                        <tr >
+                            <th class="">Ref.</th>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th class="slot">Slot</th>
+                            <th>Size</th>
+                            {% if user.is_staff %}
+                            <th>Table:</th>
+                            <th>Seats:</th>
+                            {% endif %}
+                            <th>Edit</th>
+                            <th class="no-right-border">Delete</th>
+                        </tr>
+                    </thead>
+                    {% for booking in object_list %}
+                    <tbody>
+                        <tr>
+                            <td>{{ booking.pk }}</td>
+                            <td>{{ booking.booking_name }}</td>
+                            <td class="slot">{{ booking.booking_date }}</td>
+                            <td class="slot">{{ booking.get_booking_slot_display }}</td>
+                            <td>{{ booking.booking_size }}</td>
+                            {% if user.is_staff %}
+                            <td>{{ booking.booking_table }}</td>
+                            <td>{{ booking.booking_table.capacity }}</td>
+                            {% endif %}
+                            <!-- Table links to edit or delete a booking - redirects to appropriate page -->
+                            <td>
+                                <a href="{% url 'editbooking' booking.id %}" class="text-xl cyan-glow-hover">
+                                    <i class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                            <td class="no-right-border">
+                                <a href="{% url 'delete_booking' booking.id %}" class="text-xl red-glow-hover">
+                                    <i class="fa-solid fa-xmark"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
-    </div>
-</div>
-
-<div class="container m-3">
-    <!-- Search querys -->
-    {% if request.user.is_staff %}
-        <form method='GET' class="mb-3">
-            <input type='text' name='q' value='{{ request.GET.q }}' autocomplete="off" aria-label="Search Booking by reference"
-                placeholder="Search Booking Ref">
-            <button class="btn p-0 search-btn" type='submit' value="Search Booking by ref" aria-label="Click to search by booking ref">
-                <i class="fas fa-search"></i>
-            </button>
-        </form>
-        <form method='GET' class="mb-3">
-            <input type='text' name='d' value='{{ request.GET.d }}' class="datepicker" autocomplete="off" aria-label="Search Bookings by date"
-                placeholder="Search Booking Date">
-            <button class="btn p-0 search-btn" type='submit' value="Search Booking by ref" aria-label="Click to search by date">
-                <i class="fas fa-search"></i>
-            </button>
-        </form>
-    {% endif %}
-    <!-- Manage bookings table -->
-    <div class="form-style">
-        <h1 class="text-center">Bookings List</h1>
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Booking Reference</th>
-                    <th>Customer</th>
-                    <th>Date</th>
-                    <th>Time Slot</th>
-                    <th>No. Guests</th>
-                    {% if user.is_staff %}
-                    <th>Table:</th>
-                    <th>Capacity:</th>
-                    {% endif %}
-                    <th><span class="sr-only">Edit Button Column</span></th>
-                    <th><span class="sr-only">Delete Button Column</span></th>
-                </tr>
-            </thead>
-            {% for booking in object_list %}
-            <tbody>
-                <tr>
-                    <td>
-                        {{ booking.pk }}
-                    </td>
-                    <td>
-                        {{ booking.booking_name }}
-                    </td>
-                    <td>
-                        {{ booking.booking_date }}
-                    </td>
-                    <td>
-                        {{ booking.get_booking_time_display }}
-                    </td>
-                    <td>
-                        {{ booking.number_of_guests }}
-                    </td>
-                    {% if user.is_staff %}
-                    <td>
-                        {{ booking.booked_table }}
-                    </td>
-                    <td>
-                        {{ booking.booked_table.capacity }}
-                    </td>
-                    {% endif %}
-                    <td>
-                        <a href="{% url 'editbooking' booking.id %}" class="btn button-style m-2">Edit</a>
-                    </td>
-                    <td>
-                        <a href="{% url 'delete_booking' booking.id %}" class="btn button-style m-2">Delete</a>
-                    </td>
-                </tr>
-            </tbody>
-            {% endfor %}
-        </table>
     </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
-<script>$('.datepicker').datepicker(value="d MM, y", { minDate: 0, showOtherMonths: true, selectOtherMonths: true});</script>
-
+<script>$('.datepicker').datepicker({minDate: 0, showOtherMonths: true, selectOtherMonths: true});</script>
+<!-- { dateFormat: 'YYYY-MM-DD' }, -->
 {% endblock %}
