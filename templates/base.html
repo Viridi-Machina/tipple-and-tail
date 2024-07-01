@@ -1,13 +1,14 @@
 <!-- Custom and template static load -->
 {% load static %}
 {% load static tailwind_tags %}
-<!-- Internal links -->
-{% url 'home' as home_url %}
-{% url 'events' as events_url %}
 <!-- allauth links -->
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
+<!-- Internal links -->
+{% url 'home' as home_url %}
+{% url 'events' as events_url %}
+{% url 'createbooking' as booking_url %}
 
 
 <!DOCTYPE html>
@@ -30,6 +31,8 @@
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        {% block css %}
+        {% endblock %}
 
     </head>
 
@@ -59,12 +62,14 @@
                         <!-- Home -->
                         <a href="{% url 'home' %}" class="text-sm font-light leading-6 text-white 
                         {% if request.path == home_url %}active{% endif %}">HOME</a>
-                        <!-- About -->
-                        <a href="#about" class="text-sm font-light leading-6 text-white">ABOUT</a>
+                        <!-- About: Scrolls down to about content. If not on home page, first loads page then scrolls -->
+                        <a href="{% if request.path == home_url  %}#about{% else %}{% url 'home' %}#about{% endif %}" 
+                        class="text-sm font-light leading-6 text-white">ABOUT</a>
                         <!-- Contact -->
-                        <a href="#contact" class="text-sm font-light leading-6 text-white">CONTACT</a>
+                        <a href="{% if request.path == home_url  %}#contact{% else %}{% url 'home' %}#contact{% endif %}" 
+                        class="text-sm font-light leading-6 text-white">CONTACT</a>
                         <!-- Bookings -->
-                        <a href="#" class="text-sm font-light leading-6 text-white
+                        <a href="{% url 'createbooking' %}" class="text-sm font-light leading-6 text-white
                         {% if request.path == bookings_url %}active{% endif %}">BOOKINGS</a>
                         <!-- Events -->
                         <a href="{% url 'events' %}" class="text-sm font-light leading-6 text-white

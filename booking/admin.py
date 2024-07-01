@@ -37,5 +37,3 @@ class BookingAdmin(admin.ModelAdmin):
     list_filter = (
         'booking_slot', 'booking_table',
     )
-
-# admin.site.register(Booking)
