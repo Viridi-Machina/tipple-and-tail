@@ -22,6 +22,7 @@
             </p>
         </div>
     </div>
+    <!-- Inner form container -->
     <div class="flex justify-center px-6 lg:px-8">
         <div class="mx-auto max-w-2xl pb-11 text-yellow-100">
             <form method="POST" action="{% url 'createbooking' %}" enctype="multipart/form-data">
@@ -41,6 +42,7 @@
                     {% endif %}
                 </div>
                 {% endfor %}
+                <!-- Form submission -->
                 <div class="text-center pt-7">
                     <button class="text-yellow-100 hover-glow" type="submit">BOOK</button>
                 </div>
