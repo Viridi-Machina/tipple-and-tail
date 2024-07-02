@@ -62,8 +62,9 @@
             <p {% if message.tags %} class="py-4 {{ message.tags }}"{% endif %}>{{ message }}</p>
             </div>
             {% endfor %}
-            {% endif %} 
         </div>
+        {% endif %} 
+        
         <!-- Adapted from tailwind official example https://tailwindui.com/components/marketing/sections/heroes -->
         <div class="tipple-hero">
             <img class="fixed overflow-y-hidden -z-10" src="{% static 'images/gold-dark-bg.jpeg' %}" alt="Background">
