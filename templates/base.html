@@ -39,7 +39,7 @@
 
     </head>
 
-    <body>
+    <body class="flex-auto">
         <!-- Adapted from tailwinf official example https://tailwindui.com/components/marketing/sections/heroes -->
         <div class="tipple-hero">
             <img class="fixed overflow-y-hidden -z-10" src="{% static 'images/gold-dark-bg.jpeg' %}" alt="Background">
@@ -72,7 +72,7 @@
                         <a href="{% if request.path == home_url  %}#contact{% else %}{% url 'home' %}#contact{% endif %}" 
                         class="text-sm font-light leading-6 text-white">CONTACT</a>
                         <!-- Bookings -->
-                        <a href="{% url 'createbooking' %}" class="text-sm font-light leading-6 text-white
+                        <a href="{% url 'managebookings' %}" class="text-sm font-light leading-6 text-white
                         {% if '/booking/' in request.path %}active{% endif %}">BOOKINGS</a>
                         <!-- Events -->
                         <a href="{% url 'events' %}" class="text-sm font-light leading-6 text-white

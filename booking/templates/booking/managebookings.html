@@ -9,13 +9,15 @@
 
 <div class="container max-w-4xl top-36 mb-64">
     <div class="px-6 pt-8 lg:px-8">
-        <div class="mx-auto max-w-96 pb-10 text-white">
+        <div class="mx-auto w-fit pb-10 text-white">
             <h1 class="text-4xl text-center text-yellow-100 text-glow-yellow">Manage Bookings</h1>
 
-            <p class="pt-10 text-center">
-                View and edit your bookings.<br>If you want to create a new booking click
-                <a class="text-yellow-100 hover-glow font-semibold" href="{% url 'createbooking' %}">here</a>.
+            <p class="pt-6 text-center">
+                View and edit your bookings.<br>If you want to create a new booking click below:
             </p>
+            <div class="mt-5 flex items-center justify-center gap-x-6">
+                <a href="{% url 'createbooking' %}" class="rounded-full bg-black opacity-85 lg:min-w-8 px-8 py-1 text-lg text-white shadow-sm button-glow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create New Booking</a>
+            </div>
         </div>
     </div>
     <div class="px-6 lg:px-8">
@@ -43,8 +45,8 @@
             <div class="bg-zinc-600 solid rounded-3xl max-w-fit mx-auto">
                 <h1 class="text-2xl text-center py-2 font-semibold">Your Bookings</h1>
                 <table class="">
-                    <thead class="top-row">
-                        <tr >
+                    <thead>
+                        <tr id="top-row">
                             <th class="">Ref.</th>
                             <th>Name</th>
                             <th>Date</th>
@@ -88,9 +90,11 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block scripts %}
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
 <script>$('.datepicker').datepicker({dateFormat: 'yy-mm-dd', minDate: 0, showOtherMonths: true, selectOtherMonths: true});</script>
-
 {% endblock %}
