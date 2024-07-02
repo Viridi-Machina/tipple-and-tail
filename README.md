@@ -390,6 +390,10 @@ All of the above validations were passed:
   ![image](https://github.com/Viridi-Machina/battleships/assets/146846939/9081df0b-d551-40f2-b9c1-f770b9d4a5fb)
   </details>
 
+## Credits
+- Mentor: Gareth McGirr -> booking view and form code heavily used and adapted for my own project.
+- Other code snipets have been referrenced within the project files.
+- All styling is completely my own, graphics and logos made via adobe flash and figma. Hero background image from adobe stock
 
 
 
