@@ -20,7 +20,7 @@ from booking import views
 # from user import views as use_views
 
 urlpatterns = [
-    
+
     path('admin/', admin.site.urls),
     path('', include('about.urls'), name='about-urls'),
     path('booking/', include('booking.urls')),

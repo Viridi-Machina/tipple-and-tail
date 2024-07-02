@@ -4,7 +4,7 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
-# Build paths ----------------------------------------------------------------------
+# Build paths -----------------------------------------------------------------
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
@@ -16,7 +16,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
-# Application definition -----------------------------------------------------------
+# Application definition ------------------------------------------------------
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -86,7 +86,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'django_project.wsgi.application'
 
 
-# Database -------------------------------------------------------------------------
+# Database --------------------------------------------------------------------
 
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
@@ -96,26 +96,30 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com"
 ]
 
-# Password validation --------------------------------------------------------------
+# Password validation ---------------------------------------------------------
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': ('django.contrib.auth.password_validation.'
+                 'UserAttributeSimilarityValidator'),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': ('django.contrib.auth.password_validation.'
+                 'MinimumLengthValidator'),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': ('django.contrib.auth.password_validation.'
+                 'CommonPasswordValidator'),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': ('django.contrib.auth.password_validation.'
+                 'NumericPasswordValidator'),
     },
 ]
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
-# Internationalization -------------------------------------------------------------
+# Internationalization --------------------------------------------------------
 
 LANGUAGE_CODE = 'en-us'
 
@@ -126,13 +130,13 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images) -------------------------------------------
+# Static files (CSS, JavaScript, Images) --------------------------------------
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Default primary key field type ---------------------------------------------------
+# Default primary key field type ----------------------------------------------
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

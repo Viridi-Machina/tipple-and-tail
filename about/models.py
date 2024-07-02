@@ -3,6 +3,7 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "New"), (1, "Expired"))
 
+
 class About(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
@@ -11,7 +12,7 @@ class About(models.Model):
 
     def __str__(self):
         return f"About Content"
-    
+
 
 class Event(models.Model):
     title = models.CharField(max_length=150, unique=False)

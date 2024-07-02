@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from django import forms
 from .models import Table, Booking
 
+
 # Form code taken mostly from Mentor Greg McGirr (Sizzle & Steak)
 class BookingForm(forms.ModelForm):
     """
@@ -14,7 +15,7 @@ class BookingForm(forms.ModelForm):
         """
         model = Booking
         fields = [
-            'booking_name', 'booking_date', 'booking_size', 
+            'booking_name', 'booking_date', 'booking_size',
             'booking_slot', 'package', 'allergies', 'special'
         ]
         labels = {
@@ -26,7 +27,8 @@ class BookingForm(forms.ModelForm):
             'allergies': 'Does you party have any allergies?',
             'special': 'Use keywords to specify any special requirements',
         }
-        booking_date = forms.DateField(help_text="Date must be set in the future")
+        booking_date = forms.DateField(
+            help_text="Date must be set in the future")
 
     def clean(self):
         """
@@ -82,8 +84,6 @@ class BookingForm(forms.ModelForm):
                 )
         if not available_table:
             raise ValidationError('No tables available for this date and time')
-        
-
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -91,10 +91,11 @@ class BookingForm(forms.ModelForm):
         # non-editble by direct input and sets the current date as a
         # default value to avoid form submission errors.
         self.fields['booking_date'].widget.attrs['class'] = 'datepicker'
-        self.fields['booking_date'].widget.attrs['value'] = datetime.now().date()
+        self.fields['booking_date'].widget.attrs[
+            'value'] = datetime.now().date()
         self.fields['booking_date'].widget.attrs['autocomplete'] = 'off'
         self.fields['booking_date'].widget.attrs['readonly'] = 'readonly'
-        # Booking-size field attributes - sets min and max values for integer field
+        # Booking-size field attributes - min and max values for integer field
         self.fields['booking_size'].widget.attrs['min'] = 1
         self.fields['booking_size'].widget.attrs['max'] = 8
         # Package field attributes
@@ -102,5 +103,6 @@ class BookingForm(forms.ModelForm):
         self.fields['package'].widget.attrs['empty_label'] = None
         self.fields['allergies'].widget.attrs['class'] = 'allergy-label'
         self.fields['special'].widget.attrs['class'] = 'special-label'
-        self.fields['special'].widget.attrs['placeholder'] = 'e.g Wheelchair access'
+        self.fields['special'].widget.attrs[
+            'placeholder'] = 'e.g Wheelchair access'
         self.fields['special'].required = False

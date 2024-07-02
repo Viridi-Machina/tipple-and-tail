@@ -3,6 +3,7 @@ from .models import Table, Package, Booking
 
 # Registry code adapted from Mentor Gareth McGirr
 
+
 @admin.register(Table)
 class TableAdmin(admin.ModelAdmin):
     """ Admin panel view of tables capacity filter. """

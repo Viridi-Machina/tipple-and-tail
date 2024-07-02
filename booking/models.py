@@ -5,9 +5,11 @@ from .constants import TIME_SLOT_OPTIONS, CAPACITY
 
 # Models revised and refined with help from Mentor Gareth McGirr
 
+
 class Table(models.Model):
     """
-    Model for table creation. Uses constants for predefined timeslots and table sizes. 
+    Model for table creation. Uses constants for predefined timeslots
+    and table sizes.
     """
     number = models.IntegerField(unique=True)
     capacity = models.IntegerField(choices=CAPACITY)
@@ -19,7 +21,7 @@ class Table(models.Model):
         ordering = ['number']
 
     def __str__(self):
-        return f"Table {self.number} - {self.capacity} People" 
+        return f"Table {self.number} - {self.capacity} People"
 
 
 class Package(models.Model):
@@ -39,13 +41,22 @@ class Booking(models.Model):
     Model for booking creation.
     """
     booking_name = models.CharField()
-    customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="booking_guest")
+    customer = models.ForeignKey(
+        User, on_delete=models.CASCADE,
+        related_name="booking_guest")
     booking_date = models.DateField()
     booking_size = models.IntegerField(default=2)
-    booking_table = models.ForeignKey(Table, on_delete=models.CASCADE, related_name="booking_table")
-    booking_slot = models.IntegerField(choices=TIME_SLOT_OPTIONS, default=1)
-    package = models.ForeignKey(Package, on_delete=models.CASCADE, related_name="booking_package", null=True)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="event", null=True)
+    booking_table = models.ForeignKey(
+        Table, on_delete=models.CASCADE,
+        related_name="booking_table")
+    booking_slot = models.IntegerField(
+        choices=TIME_SLOT_OPTIONS, default=1)
+    package = models.ForeignKey(
+        Package, on_delete=models.CASCADE,
+        related_name="booking_package", null=True)
+    event = models.ForeignKey(
+        Event, on_delete=models.CASCADE,
+        related_name="event", null=True)
     allergies = models.BooleanField(default=False)
     special = models.CharField(max_length=250)
 

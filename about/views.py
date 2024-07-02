@@ -21,4 +21,3 @@ def event_list(request):
     }
 
     return render(request, "about/event_list.html", context,)
-

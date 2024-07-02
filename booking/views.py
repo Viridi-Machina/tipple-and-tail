@@ -31,11 +31,11 @@ class CreateBooking(LoginRequiredMixin, CreateView):
         available_table = list(Table.objects.filter(
             capacity__gte=guests
         ))
-        
+
         # Filter tables with the requested date
         bookings_on_requested_date = Booking.objects.filter(
             booking_date=date, booking_slot=time)
-        
+
         # Iterate over bookings to get tables not booked
         for booking in bookings_on_requested_date:
             for table in available_table:
@@ -112,11 +112,11 @@ class EditBookingView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         available_table = list(Table.objects.filter(
             capacity__gte=guests
         ))
-        
+
         # Filter tables with the requested date
         bookings_on_requested_date = Booking.objects.filter(
             booking_date=date, booking_slot=time)
-        
+
         # Iterate over bookings and remove table from bookings
         for booking in bookings_on_requested_date:
             for table in available_table:
