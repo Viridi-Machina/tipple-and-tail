@@ -61,7 +61,7 @@
             </div>
             {% endif %} 
         </div>
-        <!-- Adapted from tailwinf official example https://tailwindui.com/components/marketing/sections/heroes -->
+        <!-- Adapted from tailwind official example https://tailwindui.com/components/marketing/sections/heroes -->
         <div class="tipple-hero">
             <img class="fixed overflow-y-hidden -z-10" src="{% static 'images/gold-dark-bg.jpeg' %}" alt="Background">
             <header class="absolute inset-x-0 top-0 z-50 nav-position">
@@ -72,17 +72,8 @@
                             <img class="size-28" src="{% static 'images/tat-logo.png' %}" alt="Logo">
                         </a>
                     </div>
-                    <!-- Container for mobile menu select  -->
-                    <div class="flex lg:hidden">
-                        <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
-                            <span class="sr-only">Open main menu</span>
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                            </svg>
-                        </button>
-                    </div>
                     <!-- Container for main navbar elements (middle) -->
-                    <div class="hidden lg:flex lg:gap-x-12">
+                    <div class="hidden md:flex md:gap-x-2 lg:flex lg:gap-x-12">
                         <!-- Home -->
                         <a href="{% url 'home' %}" class="text-sm font-light leading-6 text-white 
                         {% if request.path == home_url %}active{% endif %}">HOME</a>
@@ -100,7 +91,7 @@
                         {% if request.path == events_url %}active{% endif %}">EVENTS</a>
                     </div>
                     <!-- Container for register and login elements (right) -->
-                    <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                    <div class="hidden md:flex lg:flex lg:flex-1 lg:justify-end">
                     {% if user.is_authenticated %}
                         <!-- [You are logged in as <user> | LOGOUT] -->
                         {% if user.is_staff %}
@@ -124,39 +115,6 @@
                 </nav>
                 <!-- Navbar transparent strip -->
                 <div class="bg-zinc-800 relative h-8 w-full nav-block -z-10 opacity-75"></div>
-
-                <!-- Mobile menu, show/hide based on menu open state. -->
-                <div class="hidden" role="dialog" aria-modal="true">
-                    <!-- Background backdrop, show/hide based on slide-over state. -->
-                    <div class="fixed inset-0 z-50"></div>
-                    <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-zinc-800 opacity-95 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                    <div class="flex items-center justify-between">
-                        <a href="#" class="-m-1.5 p-1.5">
-                        <img class="h-8 w-auto" src="{% static 'images/tat-logo.png' %}" alt="">
-                        </a>
-                        <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
-                        <span class="sr-only">Close menu</span>
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                        </button>
-                    </div>
-                    <div class="mt-6 flow-root">
-                        <div class="-my-6 divide-y divide-gray-500/10">
-                        <div class="space-y-2 py-6">
-                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50">Home</a>
-                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50">About</a>
-                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50">Contact</a>
-                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50">Bookings</a>
-                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50">Events</a>
-                        </div>
-                        <div class="py-6">
-                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
             </header>
         </div>
 

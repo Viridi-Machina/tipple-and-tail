@@ -153,7 +153,7 @@ class DeleteBookingView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     success_url = "/booking/managebookings"
 
     def form_valid(self, form):
-        """ Display toast message on form success """
+        """ Display message on form success """
         messages.success(
             self.request,
             'Successfully deleted booking'
