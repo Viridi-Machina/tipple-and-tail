@@ -60,8 +60,8 @@
             {% for message in messages %}
             <div class="" role="alert">
             <p {% if message.tags %} class="py-4 {{ message.tags }}"{% endif %}>{{ message }}</p>
-            {% endfor %}
             </div>
+            {% endfor %}
             {% endif %} 
         </div>
         <!-- Adapted from tailwind official example https://tailwindui.com/components/marketing/sections/heroes -->
