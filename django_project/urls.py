@@ -20,10 +20,10 @@ from booking import views
 # from user import views as use_views
 
 urlpatterns = [
-    path('accounts/', include('allauth.urls')),
+    
     path('admin/', admin.site.urls),
+    path('', include('about.urls'), name='about-urls'),
     path('booking/', include('booking.urls')),
     path('summernote/', include('django_summernote.urls')),
-    # path('user/', use_views.user_page, name='user'),
-    path('', include('about.urls'), name='about-urls'),
+    path('accounts/', include('allauth.urls')),
 ]

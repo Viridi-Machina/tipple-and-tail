@@ -1,5 +1,4 @@
 from datetime import timedelta, date
-from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import DeleteView, CreateView, UpdateView, ListView
 from django.contrib import messages

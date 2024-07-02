@@ -39,7 +39,28 @@
 
     </head>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <!-- Script snippet taken from stackoverflow.com -->
+    <script>
+    $(document).ready(function() {
+        // messages timeout for 4 sec
+        setTimeout(function() {
+            $('.messages').fadeOut('slow');
+        }, 4000); // <-- time in milliseconds, 1000 =  1 sec
+    });
+    </script>
     <body class="flex-auto">
+
+        {% if messages %}
+        <div class="messages px-5">
+            {% for message in messages %}
+            <div class="" role="alert">
+            <p {% if message.tags %} class="py-4 {{ message.tags }}"{% endif %}>{{ message }}</p>
+            {% endfor %}
+            </div>
+            {% endif %} 
+        </div>
         <!-- Adapted from tailwinf official example https://tailwindui.com/components/marketing/sections/heroes -->
         <div class="tipple-hero">
             <img class="fixed overflow-y-hidden -z-10" src="{% static 'images/gold-dark-bg.jpeg' %}" alt="Background">
@@ -82,7 +103,11 @@
                     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
                     {% if user.is_authenticated %}
                         <!-- [You are logged in as <user> | LOGOUT] -->
+                        {% if user.is_staff %}
+                        <span class="text-sm font-thin leading-6 text-white px-1 text-glow-purple purple-text">You are logged in as ADMIN</span>
+                        {% else %}
                         <span class="text-sm font-thin leading-6 text-white px-1 active">You are logged in as {{ user }}</span>
+                        {% endif %}
                         <span class="text-sm font-normal leading-6 text-white px-1">|</span>
                         <a href="{% url 'account_logout' %}" class="text-sm font-thin leading-6 text-white
                         {% if request.path == logout_url %}active{% endif %}" aria-current="page">LOGOUT <i class="fa-solid fa-door-open"></i></a>
@@ -138,9 +163,6 @@
             {% block content %}
             
             {% endblock content %}
-
-
-        <!-- Footer -->
 
         {% block scripts %}
         {% endblock %}
