@@ -1,8 +1,8 @@
-const nameField = document.getElementById("id_booking_name");
+// django route for javascript to parse logged-in username from project
 const user_id = JSON.parse(document.getElementById('username').textContent);
 
-
-console.log(user_id);
-console.log(nameField);
+// Query constants
+const nameField = document.getElementById("id_booking_name");
+const allergyLabel = document.getElementById("id_allergies");
 
 nameField.setAttribute("value", user_id);

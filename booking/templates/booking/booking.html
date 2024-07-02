@@ -7,36 +7,40 @@
 
 {% block content %}
 {{ request.user.first_name|json_script:"username" }}
+<!-- Main form container -->
 <div class="container max-w-2xl top-36 mb-64">
+    <!-- Form header text and title -->
     <div class="px-6 pt-8 lg:px-8">
-        <div class="mx-auto max-w-96 pb-10 text-white">
+        <div class="mx-auto max-w-96 pb-8 text-white">
             <h1 class="text-4xl text-center text-yellow-100 text-glow-yellow">Create Booking</h1>
-
-            <p class="pt-10">Welcome to the Tipple & tail booking page. 
-                To create a booking please fill all required fields below.</p>
+            <p class="pt-10 text-center">
+                Welcome to the Tipple & tail booking page.<br> 
+                To create a booking please fill out the form below.
+            </p>
+            <p class="pt-4 text-center">
+                Required fields are indicated with <span class="text-red-400">*</span>
+            </p>
         </div>
     </div>
     <div class="flex justify-center px-6 lg:px-8">
         <div class="mx-auto max-w-2xl pb-11 text-yellow-100">
             <form method="POST" action="{% url 'createbooking' %}" enctype="multipart/form-data">
                 {% csrf_token %}
-                {% if form.errors %}
-                    {{ form.errors }}
+                {% if form.non_field_errors %}
+                <div class="text-red-400">{{ form.non_field_errors }}</div>
                 {% endif %}
                 {% for field in form %}
-                    <div class="py-2">
-                        {{ field.errors }}
-                        {{ field.label_tag }} {{ field }}
-                        {% if field.help_text %}
-                            <p class="help" id="{{ field.auto_id }}_helptext">
-                                {{ field.help_text|safe }}
-                            </p>
-                        {% endif %}
-                    </div>
+                <div class="py-2">
+                    {{ field.errors }}
+                    {{ field.label_tag }} {{ field }}
+                    {% if field.field.required %}<span class="text-red-400">*</span>{% endif %}
+                    {% if field.help_text %}
+                    <p class="help" id="{{ field.auto_id }}_helptext">
+                        {{ field.help_text|safe }}
+                    </p>
+                    {% endif %}
+                </div>
                 {% endfor %}
-                <!-- {% if redirect_field_value %}
-                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %} -->
                 <div class="text-center pt-7">
                     <button class="text-yellow-100 hover-glow" type="submit">BOOK</button>
                 </div>
@@ -48,6 +52,7 @@
 {% endblock %}
 
 {% block scripts %}
+<!-- Datepicker scripts -->
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">

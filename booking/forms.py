@@ -24,10 +24,9 @@ class BookingForm(forms.ModelForm):
             'booking_slot': 'Time-slot',
             'package': 'Package',
             'allergies': 'Does you party have any allergies?',
-            'special': 'Please state any special requirements',
+            'special': 'Use keywords to specify any special requirements',
         }
         booking_date = forms.DateField(help_text="Date must be set in the future")
-
 
     def clean(self):
         """
@@ -72,6 +71,9 @@ class BookingForm(forms.ModelForm):
         if date < datetime.today().date():
             raise ValidationError(
                 'Invalid date - Booking cannot be in the past')
+        if guests > 8:
+            raise ValidationError(
+                'Maximum group size cannot exceed 8 people')
         if table_booked is not None:
             if not available_table and table_booked.capacity < guests:
                 raise ValidationError(
@@ -80,13 +82,25 @@ class BookingForm(forms.ModelForm):
                 )
         if not available_table:
             raise ValidationError('No tables available for this date and time')
-        if guests > 8:
-            raise ValidationError('Maximum booking size possible is 8')
+        
 
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # Date field attributes - links datepicker calendar, makes field
+        # non-editble by direct input and sets the current date as a
+        # default value to avoid form submission errors.
         self.fields['booking_date'].widget.attrs['class'] = 'datepicker'
+        self.fields['booking_date'].widget.attrs['value'] = datetime.now().date()
         self.fields['booking_date'].widget.attrs['autocomplete'] = 'off'
+        self.fields['booking_date'].widget.attrs['readonly'] = 'readonly'
+        # Booking-size field attributes - sets min and max values for integer field
+        self.fields['booking_size'].widget.attrs['min'] = 1
+        self.fields['booking_size'].widget.attrs['max'] = 8
+        # Package field attributes
         self.fields['package'].required = False
+        self.fields['package'].widget.attrs['empty_label'] = None
+        self.fields['allergies'].widget.attrs['class'] = 'allergy-label'
+        self.fields['special'].widget.attrs['class'] = 'special-label'
+        self.fields['special'].widget.attrs['placeholder'] = 'e.g Wheelchair access'
         self.fields['special'].required = False

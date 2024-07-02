@@ -89,6 +89,28 @@ form > div {
     color: rgb(248 113 113);
 }
 
+/* Finally came accross a solution to target a django-form-generated label
+The below selector targets the parent of a class declared in form.py 
+Then reselects the direct child element <label> to apply styling
+Many hours were spent coming up with this solution */
+
+/* Allergy label */
+div:has(>.allergy-label) > label {
+    width: fit-content;
+}
+
+/* Special label */
+div:has(>.special-label) > label {
+    display: block;
+    width: fit-content;
+    padding-bottom: 4px;
+}
+
+/* Special field */
+.special-label {
+    width: 500px;
+}
+
 /* Table styling */
 table {
     border-collapse: collapse;
