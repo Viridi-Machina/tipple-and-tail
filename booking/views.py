@@ -22,23 +22,11 @@ class CreateBooking(LoginRequiredMixin, CreateView):
         Before form submission, assign table with lowest capacity
         needed for booking guests
         """
+        form.instance.customer = self.request.user
         date = form.cleaned_data['booking_date']
         time = form.cleaned_data['booking_slot']
         guests = form.cleaned_data['booking_size']
 
-        # Checks whether the logged-in user is staff or not.
-        # If true, then booking can be made under any name.
-        # 
-        # Otherwise, customer's name is given as default.
-        name_input = form.instance.booking_name
-        staff = self.request.user.is_staff
-        admin = self.request.user.is_superuser
-
-        if staff or admin :
-            name_input = name_input
-        else:
-            name_input = self.request.user
-        
         # Filter tables with capacity greater than or equal
         # to the number of guests (using __gte method)
         available_table = list(Table.objects.filter(
@@ -96,7 +84,7 @@ class BookingsList(LoginRequiredMixin, ListView):
             # returns all bookings for logged in customer
             # with date greater than yesterday
             return Booking.objects.filter(
-                booking_name=self.request.user,
+                customer=self.request.user,
                 booking_date__gt=(date.today()-timedelta(days=1))
                 )
 
@@ -118,7 +106,7 @@ class EditBookingView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         """
         date = form.cleaned_data['booking_date']
         time = form.cleaned_data['booking_slot']
-        guests = form.cleaned_data['number_of_guests']
+        guests = form.cleaned_data['booking_size']
 
         # Filter tables with capacity greater than or equal
         # to the number of guests (using __gte method)
@@ -157,7 +145,7 @@ class EditBookingView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         if self.request.user.is_staff:
             return True
         else:
-            return self.request.user == self.get_object().booking_name
+            return self.request.user == self.get_object().customer
 
 
 class DeleteBookingView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -178,4 +166,4 @@ class DeleteBookingView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user.is_staff:
             return True
         else:
-            return self.request.user == self.get_object().booking_name
+            return self.request.user == self.get_object().customer

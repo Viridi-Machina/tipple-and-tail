@@ -20,6 +20,9 @@
         <div class="mx-auto max-w-2xl pb-11 text-yellow-100">
             <form method="POST" action="{% url 'editbooking' booking.id %}" enctype="multipart/form-data">
                 {% csrf_token %}
+                {% if form.errors %}
+                    {{ form.errors }}
+                {% endif %}
                 {% for field in form %}
                     <div class="py-2">
                         {{ field.errors }}

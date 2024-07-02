@@ -38,7 +38,8 @@ class Booking(models.Model):
     """
     Model for booking creation.
     """
-    booking_name = models.ForeignKey(User, on_delete=models.CASCADE, related_name="booking_guest")
+    booking_name = models.CharField()
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="booking_guest")
     booking_date = models.DateField()
     booking_size = models.IntegerField(default=2)
     booking_table = models.ForeignKey(Table, on_delete=models.CASCADE, related_name="booking_table")
