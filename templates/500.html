@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<div class="flex-auto">
+    <div class="relative isolate pt-8 px-10">
+        <!-- Template from here -->
+        <div class="max-w-4xl mx-auto mt-24">
+            <div class="event-shadow flex h-12 bg-zinc-900 opacity-85 rounded-xl overflow-hidden justify-center">
+                <div class="text-red-400 p-6 flex">
+                    <h1 class="text-5xl font-semibold text-glow-purple mx-auto">500 Internal Server Error</h1>
+                </div>
+            </div>
+            <div class="event-shadow flex gap-3 top-2 bg-zinc-900 opacity-85 rounded-xl overflow-hidden justify-center">
+                    <p class="text-white text-2xl p-6 text-center">It's not you, it's me...<br> Try getting back to where you were using the Navbar above.</p>
+            </div>
+        
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
