@@ -284,77 +284,70 @@ some unneccesary models such as TimeSlot and TableSlot and compressing them into
 
 ## Features
 **CRUD Functionality**
+- Users can create, edit and delete their created bookings from the booking dashboard.
+- Admins can access all user's bookings for the purpose of updating or deleting.
+- Users do not have access to other user's bookings.
 
 **Authentication & Authorisation**
 
 **Future Feature Implementation**
 - Completion of the Event model, linked to a event detail view which also provides user interactions through leaving comments on events.
 - Completion of the Enquiry form on the home page - which had to be cut from development - as the main booking system took priority and
-- turned out to be rather complicated to get a grasp of.
+  turned out to be rather complicated to get a grasp of.
 - Menu feature in about section as well as opening times being displayed for users.
-- 
-
-## Roadmap
+- Links from the events page to set the date automatically in the booking page when following the link.
+- Footer with contact information and socials.
+- Increased detail with unsuccessful booking - no tables available at this time (avoiding double bookings - offer an alternative time slot.
+- Improve responsiveness for smaller devices.
 
 ## Bugs
-
-## Technologies Used
-**Core Development**
-
-**Libraries, Frameworks and Packages
-
-**Python/Django Packages**
-
-**Infrastructure**
+Double clicking the create booking button before the first response is completed results in a duplicate booking.
 
 ## Manual Testing
 
 <details>
     <summary>Navbar :mag:</summary>
     
-      ![image](https://github.com/user-attachments/assets/3a13452c-e89a-450e-b082-87a7b5660c4f)
-    
+   ![image](https://github.com/user-attachments/assets/566cb972-aecc-4b80-8988-6c55432bfce6)
 </details>
 
 <details>
     <summary>Homepage :mag:</summary>
     
-      ![image](https://github.com/user-attachments/assets/93e8322f-f4d2-46ba-953f-100982543064)
-    
+   ![image](https://github.com/user-attachments/assets/93e8322f-f4d2-46ba-953f-100982543064)
 </details>
 
 <details>
     <summary>Events Page :mag:</summary>
     
-      ![image](https://github.com/user-attachments/assets/561d8b48-bbbe-40ca-a3e6-ddcbd4d2765b)
-    
+   ![image](https://github.com/user-attachments/assets/561d8b48-bbbe-40ca-a3e6-ddcbd4d2765b)
 </details>
 
 <details>
     <summary>Register / Log In / Log Out :mag:</summary>
     
-      ![image](https://github.com/user-attachments/assets/2ab2ad58-8354-43b3-84fb-56334d3d22f4)
-    
+   ![image](https://github.com/user-attachments/assets/2ab2ad58-8354-43b3-84fb-56334d3d22f4)
 </details>
 
 <details>
     <summary>Create Booking Page :mag:</summary>
     
-      ![image](https://github.com/user-attachments/assets/0af3c36e-43fb-4af6-b182-264da21d53ec)
-    
+   ![image](https://github.com/user-attachments/assets/0af3c36e-43fb-4af6-b182-264da21d53ec)
 </details>
 
 <details>
     <summary>Booking Dashboard :mag:</summary>
     
-      ![image](https://github.com/user-attachments/assets/68466ffc-00b9-4b53-8f4e-3f5eb3a93401)
-    
+   ![image](https://github.com/user-attachments/assets/68466ffc-00b9-4b53-8f4e-3f5eb3a93401)
 </details>
 
 **Lighthouse**
+Dev Tools lighthouse tool shows 99/100 for overall performance.
+![image](https://github.com/user-attachments/assets/3647919d-e0b3-4719-b1df-1bdc6f15ac0c)
+
 
 **Responsiveness**
-ResponsivelyApp
+- This particular project was created mainly for desktop and tablets for business use as a way to manage and create bookings more-so than for users to create their own, albeit an option. 
 
 **Code Validation**
 W3C Markup Validation Service
