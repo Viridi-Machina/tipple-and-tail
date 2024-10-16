@@ -307,16 +307,49 @@ some unneccesary models such as TimeSlot and TableSlot and compressing them into
 
 **Infrastructure**
 
-## Testing
-**Automated**
+## Manual Testing
 
-**Manual**
-- Significant ammounts of manual testing was spent on checking form validations, error displays, invalid form submissions with booking pages and general bugfixing with the booking model view as a whole.
-- ~20hrs spent on manual repeat testing, mainly with the booking forms and views.
+<details>
+    <summary>Navbar :mag:</summary>
+    
+      ![image](https://github.com/user-attachments/assets/3a13452c-e89a-450e-b082-87a7b5660c4f)
+    
+</details>
 
-**Genral**
+<details>
+    <summary>Homepage :mag:</summary>
+    
+      ![image](https://github.com/user-attachments/assets/93e8322f-f4d2-46ba-953f-100982543064)
+    
+</details>
 
-**Authorisation**
+<details>
+    <summary>Events Page :mag:</summary>
+    
+      ![image](https://github.com/user-attachments/assets/561d8b48-bbbe-40ca-a3e6-ddcbd4d2765b)
+    
+</details>
+
+<details>
+    <summary>Register / Log In / Log Out :mag:</summary>
+    
+      ![image](https://github.com/user-attachments/assets/2ab2ad58-8354-43b3-84fb-56334d3d22f4)
+    
+</details>
+
+<details>
+    <summary>Create Booking Page :mag:</summary>
+    
+      ![image](https://github.com/user-attachments/assets/0af3c36e-43fb-4af6-b182-264da21d53ec)
+    
+</details>
+
+<details>
+    <summary>Booking Dashboard :mag:</summary>
+    
+      ![image](https://github.com/user-attachments/assets/68466ffc-00b9-4b53-8f4e-3f5eb3a93401)
+    
+</details>
 
 **Lighthouse**
 
